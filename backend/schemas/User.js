@@ -1,5 +1,5 @@
 import { config, list } from "@keystone-6/core";
-import { text, relationship } from "@keystone-6/core/fields";
+import { text, relationship, password } from "@keystone-6/core/fields";
 import { Post } from "./Post";
 
 export const User = list({
@@ -10,6 +10,7 @@ export const User = list({
             isIndexed: "unique",
         }),
         posts: relationship({ref: 'Post.author', many: true}),
+        password: password({validation: { isRequired: true}}),
     },
 });
 
