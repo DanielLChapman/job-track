@@ -26,6 +26,7 @@ model Post {
   status      String?   @default("draft")
   author      User?     @relation("Post_author", fields: [authorId], references: [id])
   authorId    String?   @map("author")
+  content     String    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
 
   @@index([authorId])
 }
