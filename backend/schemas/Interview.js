@@ -1,6 +1,5 @@
 import { config, list } from "@keystone-6/core";
-import { text, relationship, timestamp, select, integer } from "@keystone-6/core/fields";
-import { Job } from "./Job";
+import { text, relationship, timestamp } from "@keystone-6/core/fields";
 
 export const Interview = list({
     fields: {
