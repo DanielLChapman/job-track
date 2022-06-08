@@ -1,7 +1,8 @@
 import { config, list} from '@keystone-6/core';
-import { Post } from './schemas/Post';
+import { Job } from './schemas/Job';
 import { withAuth, session} from './auth';
 import {User} from './schemas/User';
+import { Interview } from './schemas/Interview';
 
 export default config(
     withAuth({
@@ -11,7 +12,8 @@ export default config(
     },
     lists: {
         User: User,
-        Post: Post,
+        Job: Job,
+        Interview: Interview,
     },
     session,
     ui: {

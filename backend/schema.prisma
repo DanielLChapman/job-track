@@ -15,18 +15,30 @@ model User {
   id       String @id @default(cuid())
   name     String @default("")
   email    String @unique @default("")
-  posts    Post[] @relation("Post_author")
+  jobs     Job[]  @relation("Job_author")
   password String
 }
 
-model Post {
-  id          String    @id @default(cuid())
-  title       String    @default("")
-  publishedAt DateTime?
-  status      String?   @default("draft")
-  author      User?     @relation("Post_author", fields: [authorId], references: [id])
-  authorId    String?   @map("author")
-  content     String    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+model Job {
+  id                String      @id @default(cuid())
+  name              String      @default("")
+  publishedAt       DateTime?
+  applicationDate   DateTime?
+  status            String?     @default("waiting")
+  author            User?       @relation("Job_author", fields: [authorId], references: [id])
+  authorId          String?     @map("author")
+  salaryExpectation Int?
+  interviews        Interview[] @relation("Interview_jobAttach")
 
   @@index([authorId])
+}
+
+model Interview {
+  id          String    @id @default(cuid())
+  date        DateTime?
+  type        String    @default("")
+  jobAttach   Job?      @relation("Interview_jobAttach", fields: [jobAttachId], references: [id])
+  jobAttachId String?   @map("jobAttach")
+
+  @@index([jobAttachId])
 }

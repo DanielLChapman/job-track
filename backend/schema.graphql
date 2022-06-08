@@ -5,13 +5,13 @@ type User {
   id: ID!
   name: String
   email: String
-  posts(
-    where: PostWhereInput! = {}
-    orderBy: [PostOrderByInput!]! = []
+  jobs(
+    where: JobWhereInput! = {}
+    orderBy: [JobOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Post!]
-  postsCount(where: PostWhereInput! = {}): Int
+  ): [Job!]
+  jobsCount(where: JobWhereInput! = {}): Int
   password: PasswordState
 }
 
@@ -31,7 +31,7 @@ input UserWhereInput {
   id: IDFilter
   name: StringFilter
   email: StringFilter
-  posts: PostManyRelationFilter
+  jobs: JobManyRelationFilter
 }
 
 input IDFilter {
@@ -73,10 +73,10 @@ input NestedStringFilter {
   not: NestedStringFilter
 }
 
-input PostManyRelationFilter {
-  every: PostWhereInput
-  some: PostWhereInput
-  none: PostWhereInput
+input JobManyRelationFilter {
+  every: JobWhereInput
+  some: JobWhereInput
+  none: JobWhereInput
 }
 
 input UserOrderByInput {
@@ -93,15 +93,15 @@ enum OrderDirection {
 input UserUpdateInput {
   name: String
   email: String
-  posts: PostRelateToManyForUpdateInput
+  jobs: JobRelateToManyForUpdateInput
   password: String
 }
 
-input PostRelateToManyForUpdateInput {
-  disconnect: [PostWhereUniqueInput!]
-  set: [PostWhereUniqueInput!]
-  create: [PostCreateInput!]
-  connect: [PostWhereUniqueInput!]
+input JobRelateToManyForUpdateInput {
+  disconnect: [JobWhereUniqueInput!]
+  set: [JobWhereUniqueInput!]
+  create: [JobCreateInput!]
+  connect: [JobWhereUniqueInput!]
 }
 
 input UserUpdateArgs {
@@ -112,44 +112,51 @@ input UserUpdateArgs {
 input UserCreateInput {
   name: String
   email: String
-  posts: PostRelateToManyForCreateInput
+  jobs: JobRelateToManyForCreateInput
   password: String
 }
 
-input PostRelateToManyForCreateInput {
-  create: [PostCreateInput!]
-  connect: [PostWhereUniqueInput!]
+input JobRelateToManyForCreateInput {
+  create: [JobCreateInput!]
+  connect: [JobWhereUniqueInput!]
 }
 
-type Post {
+type Job {
   id: ID!
-  title: String
+  name: String
   publishedAt: DateTime
+  applicationDate: DateTime
   status: String
   author: User
-  content: Post_content_Document
+  salaryExpectation: Int
+  interviews(
+    where: InterviewWhereInput! = {}
+    orderBy: [InterviewOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Interview!]
+  interviewsCount(where: InterviewWhereInput! = {}): Int
 }
 
 scalar DateTime
   @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
 
-type Post_content_Document {
-  document(hydrateRelationships: Boolean! = false): JSON!
-}
-
-input PostWhereUniqueInput {
+input JobWhereUniqueInput {
   id: ID
 }
 
-input PostWhereInput {
-  AND: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  NOT: [PostWhereInput!]
+input JobWhereInput {
+  AND: [JobWhereInput!]
+  OR: [JobWhereInput!]
+  NOT: [JobWhereInput!]
   id: IDFilter
-  title: StringFilter
+  name: StringFilter
   publishedAt: DateTimeNullableFilter
+  applicationDate: DateTimeNullableFilter
   status: StringNullableFilter
   author: UserWhereInput
+  salaryExpectation: IntNullableFilter
+  interviews: InterviewManyRelationFilter
 }
 
 input DateTimeNullableFilter {
@@ -191,19 +198,40 @@ input NestedStringNullableFilter {
   not: NestedStringNullableFilter
 }
 
-input PostOrderByInput {
-  id: OrderDirection
-  title: OrderDirection
-  publishedAt: OrderDirection
-  status: OrderDirection
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
 }
 
-input PostUpdateInput {
-  title: String
+input InterviewManyRelationFilter {
+  every: InterviewWhereInput
+  some: InterviewWhereInput
+  none: InterviewWhereInput
+}
+
+input JobOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  publishedAt: OrderDirection
+  applicationDate: OrderDirection
+  status: OrderDirection
+  salaryExpectation: OrderDirection
+}
+
+input JobUpdateInput {
+  name: String
   publishedAt: DateTime
+  applicationDate: DateTime
   status: String
   author: UserRelateToOneForUpdateInput
-  content: JSON
+  salaryExpectation: Int
+  interviews: InterviewRelateToManyForUpdateInput
 }
 
 input UserRelateToOneForUpdateInput {
@@ -212,22 +240,91 @@ input UserRelateToOneForUpdateInput {
   disconnect: Boolean
 }
 
-input PostUpdateArgs {
-  where: PostWhereUniqueInput!
-  data: PostUpdateInput!
+input InterviewRelateToManyForUpdateInput {
+  disconnect: [InterviewWhereUniqueInput!]
+  set: [InterviewWhereUniqueInput!]
+  create: [InterviewCreateInput!]
+  connect: [InterviewWhereUniqueInput!]
 }
 
-input PostCreateInput {
-  title: String
+input JobUpdateArgs {
+  where: JobWhereUniqueInput!
+  data: JobUpdateInput!
+}
+
+input JobCreateInput {
+  name: String
   publishedAt: DateTime
+  applicationDate: DateTime
   status: String
   author: UserRelateToOneForCreateInput
-  content: JSON
+  salaryExpectation: Int
+  interviews: InterviewRelateToManyForCreateInput
 }
 
 input UserRelateToOneForCreateInput {
   create: UserCreateInput
   connect: UserWhereUniqueInput
+}
+
+input InterviewRelateToManyForCreateInput {
+  create: [InterviewCreateInput!]
+  connect: [InterviewWhereUniqueInput!]
+}
+
+type Interview {
+  id: ID!
+  date: DateTime
+  type: String
+  jobAttach: Job
+}
+
+input InterviewWhereUniqueInput {
+  id: ID
+}
+
+input InterviewWhereInput {
+  AND: [InterviewWhereInput!]
+  OR: [InterviewWhereInput!]
+  NOT: [InterviewWhereInput!]
+  id: IDFilter
+  date: DateTimeNullableFilter
+  type: StringFilter
+  jobAttach: JobWhereInput
+}
+
+input InterviewOrderByInput {
+  id: OrderDirection
+  date: OrderDirection
+  type: OrderDirection
+}
+
+input InterviewUpdateInput {
+  date: DateTime
+  type: String
+  jobAttach: JobRelateToOneForUpdateInput
+}
+
+input JobRelateToOneForUpdateInput {
+  create: JobCreateInput
+  connect: JobWhereUniqueInput
+  disconnect: Boolean
+}
+
+input InterviewUpdateArgs {
+  where: InterviewWhereUniqueInput!
+  data: InterviewUpdateInput!
+}
+
+input InterviewCreateInput {
+  date: DateTime
+  type: String
+  jobAttach: JobRelateToOneForCreateInput
+}
+
+input JobRelateToOneForCreateInput {
+  create: JobCreateInput
+  connect: JobWhereUniqueInput
 }
 
 """
@@ -245,12 +342,21 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
-  createPost(data: PostCreateInput!): Post
-  createPosts(data: [PostCreateInput!]!): [Post]
-  updatePost(where: PostWhereUniqueInput!, data: PostUpdateInput!): Post
-  updatePosts(data: [PostUpdateArgs!]!): [Post]
-  deletePost(where: PostWhereUniqueInput!): Post
-  deletePosts(where: [PostWhereUniqueInput!]!): [Post]
+  createJob(data: JobCreateInput!): Job
+  createJobs(data: [JobCreateInput!]!): [Job]
+  updateJob(where: JobWhereUniqueInput!, data: JobUpdateInput!): Job
+  updateJobs(data: [JobUpdateArgs!]!): [Job]
+  deleteJob(where: JobWhereUniqueInput!): Job
+  deleteJobs(where: [JobWhereUniqueInput!]!): [Job]
+  createInterview(data: InterviewCreateInput!): Interview
+  createInterviews(data: [InterviewCreateInput!]!): [Interview]
+  updateInterview(
+    where: InterviewWhereUniqueInput!
+    data: InterviewUpdateInput!
+  ): Interview
+  updateInterviews(data: [InterviewUpdateArgs!]!): [Interview]
+  deleteInterview(where: InterviewWhereUniqueInput!): Interview
+  deleteInterviews(where: [InterviewWhereUniqueInput!]!): [Interview]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -289,14 +395,22 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
-  posts(
-    where: PostWhereInput! = {}
-    orderBy: [PostOrderByInput!]! = []
+  jobs(
+    where: JobWhereInput! = {}
+    orderBy: [JobOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Post!]
-  post(where: PostWhereUniqueInput!): Post
-  postsCount(where: PostWhereInput! = {}): Int
+  ): [Job!]
+  job(where: JobWhereUniqueInput!): Job
+  jobsCount(where: JobWhereInput! = {}): Int
+  interviews(
+    where: InterviewWhereInput! = {}
+    orderBy: [InterviewOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Interview!]
+  interview(where: InterviewWhereUniqueInput!): Interview
+  interviewsCount(where: InterviewWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

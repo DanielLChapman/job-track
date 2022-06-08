@@ -1,28 +1,32 @@
 import { config, list } from "@keystone-6/core";
-import { text, relationship, timestamp, select } from "@keystone-6/core/fields";
+import { text, relationship, timestamp, select, integer } from "@keystone-6/core/fields";
 import { document } from "@keystone-6/fields-document";
 import { User } from "./User";
 
-export const Post = list({
+export const Job = list({
     fields: {
-        title: text(),
+        name: text(),
         publishedAt: timestamp(),
+        applicationDate: timestamp(),
         status: select({
             options: [
                 {
-                    label: 'Published', value: 'published'
+                    label: 'Accepted', value: 'accepted'
                 },
                 {
-                    label: 'Draft', value: 'draft'
+                    label: 'Rejected', value: 'rejected'
+                },
+                {
+                    label: 'Waiting', value: 'waiting'
                 },
             ],
-            defaultValue: 'draft',
+            defaultValue: 'waiting',
             ui: {
                 displayMode: 'segmented-control'
             }
         }),
         author: relationship({
-            ref: "User.posts",
+            ref: "User.jobs",
             ui: {
                 displayMode: "cards",
                 cardFields: ["name", "email"],
@@ -33,17 +37,7 @@ export const Post = list({
                 },
             },
         }),
-        content: document({
-            formatting: true,
-            links: true,
-            dividers: true,
-            layouts: [
-                [1,1],
-                [1,1,1],
-                [2, 1],
-                [1, 2],
-                [1, 2, 1],
-            ]
-        })
+        salaryExpectation: integer(),
+        interviews: relationship({ref: 'Interview.jobAttach', many: true}),
     },
 });
