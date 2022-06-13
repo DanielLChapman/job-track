@@ -7,16 +7,12 @@ import {
     useQuery,
     gql,
 } from "@apollo/client";
+import withData from '../library/apollo'
 import { endpoint, prodEndpoint } from "../config";
 
-const client = new ApolloClient({
-    uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
-    cache: new InMemoryCache,
-});
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
     return (
-        <ApolloProvider client={client}>
+        <ApolloProvider client={apollo}>
             <Page>
                 <Component {...pageProps} />
             </Page>
@@ -33,4 +29,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
     return { pageProps };
 };
 
-export default MyApp;
+export default withData(MyApp);

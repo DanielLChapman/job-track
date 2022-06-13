@@ -136,10 +136,15 @@ type Job {
     skip: Int! = 0
   ): [Interview!]
   interviewsCount(where: InterviewWhereInput! = {}): Int
+  notes: Job_notes_Document
 }
 
 scalar DateTime
   @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
+
+type Job_notes_Document {
+  document(hydrateRelationships: Boolean! = false): JSON!
+}
 
 input JobWhereUniqueInput {
   id: ID
@@ -232,6 +237,7 @@ input JobUpdateInput {
   author: UserRelateToOneForUpdateInput
   salaryExpectation: Int
   interviews: InterviewRelateToManyForUpdateInput
+  notes: JSON
 }
 
 input UserRelateToOneForUpdateInput {
@@ -260,6 +266,7 @@ input JobCreateInput {
   author: UserRelateToOneForCreateInput
   salaryExpectation: Int
   interviews: InterviewRelateToManyForCreateInput
+  notes: JSON
 }
 
 input UserRelateToOneForCreateInput {
