@@ -6,37 +6,24 @@ export default function useForm(initial = {}) {
   const initialValues = Object.values(initial).join('');
 
   useEffect(() => {
-    // this function runs when the things we are watching change
+    // This function runs when the things we are watching change
     setInputs(initial);
   }, [initialValues]);
 
   function handleChange(e) {
     let { value, name, type } = e.target;
     if (type === 'number') {
-      value = parseInt(value, 10);
+      value = parseInt(value);
     }
     if (type === 'file') {
       [value] = e.target.files;
     }
-    if (type === 'error') {
-      setInputs({
-        ...inputs,
-        errors: {
-          [name]: value,
-        }
-      })
-    } else {
-      
-      setInputs({
-        // copy existing state
-        ...inputs,
-        [name]: value,
-      });
-    }
-    
+    setInputs({
+      // copy the existing state
+      ...inputs,
+      [name]: value,
+    });
   }
-
-
 
   function resetForm() {
     setInputs(initial);
@@ -46,11 +33,10 @@ export default function useForm(initial = {}) {
     const blankState = Object.fromEntries(
       Object.entries(inputs).map(([key, value]) => [key, ''])
     );
-
     setInputs(blankState);
   }
 
-  // return what we want to surface from custom hook
+  // return the things we want to surface from this custom hook
   return {
     inputs,
     handleChange,

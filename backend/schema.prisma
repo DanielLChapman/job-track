@@ -29,7 +29,7 @@ model Job {
   authorId          String?     @map("author")
   salaryExpectation Int?
   interviews        Interview[] @relation("Interview_jobAttach")
-  notes             String      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  notes             String      @default("")
 
   @@index([authorId])
 }

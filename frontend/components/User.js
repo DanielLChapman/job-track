@@ -18,9 +18,8 @@ export const CURRENT_USER_QUERY = gql`
                         date 
                         type 
                     }
-                    notes {
-                        document
-                    }
+                    notes
+                    id
                 }
             }
         }

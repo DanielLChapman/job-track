@@ -45,17 +45,10 @@ export const Job = list({
                     fields: ["name", "email"],
                 },
             },
+            validation: { isRequired: true },
         }),
         salaryExpectation: integer(),
         interviews: relationship({ ref: "Interview.jobAttach", many: true }),
-        notes: document({
-            formatting: true,
-            dividers: true,
-            links: true,
-            layouts: [
-                [1, 1],
-                [1, 1, 1],
-            ],
-        }),
+        notes: text(),
     },
 });
