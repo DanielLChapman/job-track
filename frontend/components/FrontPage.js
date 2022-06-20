@@ -13,7 +13,7 @@ function FrontPage(props) {
                 <>
                     <CreateJob user={user} />
                     <section className="jobs-list">
-                        <JobList jobs={user.jobs} />
+                        <JobList jobs={user.jobs} user={user} />
                     </section>
                 </>
                 

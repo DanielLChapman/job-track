@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
+import useForm from "../../library/useForm";
+import { CURRENT_USER_QUERY } from "../User";
 
 EditJob.propTypes = {
-    job: PropTypes.object,
-    user: PropTypes.user,
+    job: PropTypes.object.isRequired,
+    closeForm: PropTypes.func
 };
 
 export const EDIT_JOB_MUTATION = gql`
@@ -31,10 +33,6 @@ export const EDIT_JOB_MUTATION = gql`
 `;
 
 function EditJob(props) {
-    if (!props.job && !props.user)
-        return <div>Hey, uhm, not supposed to be here.</div>;
-    if (props.job.author.id !== props.user.id)
-        return <div>Hey, uhm, not supposed to be here.</div>;
 
     let job = props.job;
 
@@ -59,19 +57,16 @@ function EditJob(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await updateJob();
+        if (res.data.updateJob.id) {
+            props.closeForm(false);
+        }
     };
 
     return (
         <>
             {error && <span>Error, Please Try Again</span>}
-            {data && (
-                <span>
-                    Success! You Can Close This Window or Return To The Homepage{" "}
-                    <a href="/">Here</a>
-                </span>
-            )}
             <form method="POST" onSubmit={handleSubmit}>
-                <h2>Create a new Job</h2>
+                <h2>Edit {props.job.name}</h2>
                 <fieldset disabled={loading} aria-busy={loading}>
                     <label htmlFor="name">
                         Name
@@ -114,7 +109,7 @@ function EditJob(props) {
                         />
                     </label>
 
-                    <button type="submit">Add Job</button>
+                    <button type="submit">Edit Job</button>
                 </fieldset>
             </form>
         </>

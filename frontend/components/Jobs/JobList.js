@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import JobView from './JobView';
 
 JobList.propTypes = {
-    jobs: PropTypes.arrayOf(PropTypes.object)
+    jobs: PropTypes.arrayOf(PropTypes.object),
 };
 
 function JobList(props) {
@@ -10,7 +11,9 @@ function JobList(props) {
         <ul>   
             {
                 props.jobs && props.jobs.map((x) => (
-                    <li key={x.id}>{x.name}</li>
+                    <li key={x.id}>
+                        <JobView job={x}  />
+                    </li>
                 ))
             }
         </ul>
