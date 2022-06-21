@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import DeleteJob from './DeleteJob';
 import EditJob from './EditJob';
+import StatusEdit from './StatusEdit';
 
 JobView.propTypes = {
     job: PropTypes.object,
@@ -16,7 +17,7 @@ function JobView({job}) {
             <section className="job-block-title">
                 <h5 className="job-block-title-text">{job.name}</h5>
                 {
-                    quickEdit ? <span>Form Here</span> : <span className="job-block-status" onClick={() => {
+                    quickEdit ? <StatusEdit job={job} closeForm={setQuickEdit} /> : <span className="job-block-status" onClick={() => {
                         setQuickEdit(true);
                     }}>{job.status}</span>
                 }
