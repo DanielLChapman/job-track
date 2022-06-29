@@ -15,9 +15,11 @@ function Header({ user }) {
     const [modalCreateJob, setModalCreateJob] = useState(false);
 
     return (
-        <div>
+        <>
+            <h1>Job Track</h1>
             {user && (
-                <>
+                <div className="header-button-class">
+
                     <button
                         type="button"
                         className="sign-in-button"
@@ -34,9 +36,10 @@ function Header({ user }) {
                             <CreateJob user={user} />
                         </Modal>
                     )}
-                </>
+                </div>
             )}
             {!user && (
+                <div className="header-button-class">
                 <button
                     type="button"
                     className="sign-in-button"
@@ -46,15 +49,16 @@ function Header({ user }) {
                 >
                     Sign In/Up
                 </button>
+                </div>
             )}
 
-            {modal && (
+            {modal && !user && (
                 <Modal closeFunc={setModal}>
-                    <SignIn />
+                    <SignIn closeFunc={setModal} closeValue={false} />
                     <SignUp />
                 </Modal>
             )}
-        </div>
+        </>
     );
 }
 

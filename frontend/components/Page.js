@@ -39,6 +39,7 @@ export default function Page(props) {
       <GlobalStyles />
       {/*<Header />*/}
       <main>{props.children}</main>
+      <link rel="stylesheet" href="main.css" />
     </div>
   );
 }

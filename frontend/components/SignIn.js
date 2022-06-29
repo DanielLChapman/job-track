@@ -36,6 +36,9 @@ function SignIn(props) {
         e.preventDefault();
         const res = await signin();
         console.log(res);
+        if (props.closeFunc) {
+            props.closeFunc(props.closeValue);
+        }
         resetForm();
     }
 
