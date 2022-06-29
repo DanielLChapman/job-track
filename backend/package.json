@@ -5,17 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run jest",
-    "dev": "keystone dev"
+    "deploy": "keystone build && keystone prisma migrate deploy",
+    "dev": "keystone dev",
+    "postinstall": "keystone postinstall",
+    "start": "keystone start"
   },
   "author": "DanielLChapman",
   "license": "ISC",
   "dependencies": {
-    "@keystone-6/auth": "^2.0.0",
-    "@keystone-6/core": "^1.1.1",
-    "@keystone-6/fields-document": "^2.0.1",
-    "dotenv": "^16.0.1"
+    "@keystone-6/auth": "^3.0.0",
+    "@keystone-6/core": "^2.0.0",
+    "@keystone-6/fields-document": "^3.0.0",
+    "dotenv": "^16.0.1",
+    "prisma": "^3.1.4"
   },
   "devDependencies": {
     "typescript": "^4.7.3"
+  },
+  "engines": {
+    "node": "^14.15 || ^16.13"
   }
 }
