@@ -24,7 +24,7 @@ function Header({ user }) {
                         type="button"
                         className="sign-in-button"
                         onClick={() => {
-                            setModalCreateJob(true);
+                            setModalCreateJob(!modalCreateJob);
                         }}
                     >
                         Create Job
@@ -44,17 +44,17 @@ function Header({ user }) {
                     type="button"
                     className="sign-in-button"
                     onClick={() => {
-                        setModal(true);
+                        setModal(!modal);
                     }}
                 >
-                    Sign In/Up
+                    Sign In / Up
                 </button>
                 </div>
             )}
 
             {modal && !user && (
                 <Modal closeFunc={setModal}>
-                    <SignIn closeFunc={setModal} closeValue={false} />
+                    <SignIn closeFunc={setModal} closeValue={!modal} />
                     <SignUp />
                 </Modal>
             )}

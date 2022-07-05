@@ -24,7 +24,11 @@ function FrontPage(props) {
             )}
             {!user && (
                 <>
-                
+                    <section className="info-section">
+                        <section className="intro">
+                            A website to keep track of your job applications!
+                        </section>
+                    </section>
                 </>
             )}
 
