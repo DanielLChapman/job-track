@@ -11,6 +11,51 @@ html {
   background: rgb(36, 36, 36);
 }
 
+fieldset {
+  border: none;
+}
+
+form {
+  width: calc(100% - 70px);
+  position: relative;
+  left: 35px;
+}
+form .input {
+  position: relative;
+}
+form .input input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  text-align: right;
+  color: white !important;
+}
+form .input input:focus ~ label {
+  top: -25px;
+  left: 0;
+  color: white;
+  font-size: 12px;
+}
+form .input input:focus, form .input input:active {
+  background-color: transparent;
+  text-align: left;
+}
+form .input label {
+  position: absolute;
+  top: -9px;
+  left: 2px;
+  padding: 10px 0;
+  font-size: 18px;
+  color: white;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
 .header {
   display: inline-block;
   width: 100%;
@@ -104,13 +149,10 @@ html {
   color: #ffffff;
   padding: 0.5rem;
 }
-.modal-window input {
-  color: black;
-}
 .modal-window .close-modal {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 23px;
   background: transparent;
   border: transparent;
   color: white;
@@ -120,6 +162,34 @@ html {
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: 0.04em;
+}
+.modal-window .modal-title {
+  position: relative;
+  left: 25px;
+  font-size: 2rem;
+  width: 150px;
+}
+
+.sign-in-up {
+  width: 400px;
+  height: 500px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sign-in-up .hide-form-title h2 {
+  display: none;
+}
+.sign-in-up .close-modal {
+  top: 44px;
+}
+.sign-in-up .sign-in-up-selector-button {
+  background: transparent;
+  border: transparent;
+  font-size: 16px;
+  color: rgba(0, 212, 255, 0.5);
+  position: absolute;
+  right: 85px;
+  top: 46px;
 }
 
 button {
@@ -143,6 +213,14 @@ button {
 .modal-transition-exit-active {
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
 }
 
 /*# sourceMappingURL=main.css.map */

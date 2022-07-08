@@ -2,6 +2,7 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 
 function Modal(props) {
+    let t = props.classes;
     return (
         <>
             <div
@@ -10,7 +11,7 @@ function Modal(props) {
                     props.closeFunc(false);
                 }}
             ></div>
-            <div className="modal-window">
+            <div className={` modal-window ${t} `}>
                 <button
                     type="button"
                     className="close-modal"

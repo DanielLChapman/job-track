@@ -11,6 +11,55 @@ html {
     background: rgba(36, 36, 36, 1);
 }
 
+fieldset {
+    border: none;
+}
+
+
+
+form {
+    width: calc(100% - 70px);
+    position: relative;
+    left: 35px;
+    .input {
+        position: relative;
+
+        input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background-color: transparent;
+            text-align: right;
+            color: white !important;
+            &:focus ~ label {
+                top: -25px;
+                left: 0;
+                color: white;
+                font-size: 12px;
+            }
+            &:focus,
+            &:active {
+                background-color: transparent;
+                text-align: left;
+            }
+        }
+        label {
+            position: absolute;
+            top: -9px;
+            left: 2px;
+            padding: 10px 0;
+            font-size: 18px;
+            color: white;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+    }
+}
+
 .header {
     display: inline-block;
     width: 100%;
@@ -89,69 +138,108 @@ html {
 }
 .blur-layer {
     z-index: 1;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
-    position:absolute;
-    background: rgb(2,0,36);
-    background: linear-gradient(275deg, rgba(2,0,36,.5) 0%, rgba(9,9,121,.5) 35%, rgba(0,212,255,.5) 100%);
+    position: absolute;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        275deg,
+        rgba(2, 0, 36, 0.5) 0%,
+        rgba(9, 9, 121, 0.5) 35%,
+        rgba(0, 212, 255, 0.5) 100%
+    );
 }
 
-    .modal-window {
-        width: 70%;
+.modal-window {
+    width: 70%;
+    position: absolute;
+    transition: 1s;
+    height: 80vh;
+    border-radius: 15px;
+    left: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0a100f;
+    z-index: 2;
+    color: #ffffff;
+    padding: 0.5rem;
+
+    .close-modal {
         position: absolute;
-        transition: 1s;
-        height: 80vh;
-        border-radius: 15px;
-        left: 15%;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #0a100f;
-        z-index: 2;
-        color: #ffffff;
-        padding: 0.5rem;
-        input {
-            color: black
-        }
-        .close-modal {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background: transparent;
-            border: transparent;
-            color: white;
-            width: 25px;
-            height: 25px;
-            font-size: 22px;
-            line-height: 1.1;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-        }
+        right: 20px;
+        top: 23px;
+        background: transparent;
+        border: transparent;
+        color: white;
+        width: 25px;
+        height: 25px;
+        font-size: 22px;
+        line-height: 1.1;
+        font-weight: 500;
+        letter-spacing: 0.04em;
     }
 
+    .modal-title {
+        position: relative;
+        left: 25px;
+        font-size: 2rem;
+        width: 150px;
+    }
+}
 
+.sign-in-up {
+    .hide-form-title {
+        h2 {
+            display: none;
+        }
+    }
+    .close-modal {
+        top: 44px;
+    }
+    .sign-in-up-selector-button {
+        background: transparent;
+        border: transparent;
+        font-size: 16px;
+        color: rgba(0, 212, 255, 0.5);
+        position: absolute;
+        right: 85px;
+        top: 46px;
+    }
+    width: 400px;
+    height: 500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 button {
     cursor: pointer;
-    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system,
-            system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-            "Noto Color Emoji";
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
-
 
 .modal-transition-enter {
     opacity: 0;
-  }
-  .modal-transition-enter-active {
+}
+.modal-transition-enter-active {
     opacity: 1;
     transition: opacity 300ms, transform 300ms;
-  }
-  .modal-transition-exit {
+}
+.modal-transition-exit {
     opacity: 1;
-  }
-  .modal-transition-exit-active {
+}
+.modal-transition-exit-active {
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
-  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+}

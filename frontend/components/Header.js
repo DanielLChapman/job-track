@@ -60,36 +60,46 @@ function Header({ user }) {
                     unmountOnExit
                     onExited={() => setModal(false)}
                 >
-                    
-                    <Modal closeFunc={setModal} >
+                    <Modal closeFunc={setModal} classes={"sign-in-up"}>
                         <div className="header">
                             {inUp === "In" && (
-                                <button
-                                    type="button"
-                                    className="sign-in-up-selector-button"
-                                    onClick={() => {
-                                        setInUp("Up");
-                                    }}
-                                >
-                                    Sign Up
-                                </button>
+                                <>
+                                    <h1 className="modal-title">Sign In</h1>
+                                    <button
+                                        type="button"
+                                        className="sign-in-up-selector-button"
+                                        onClick={() => {
+                                            setInUp("Up");
+                                        }}
+                                    >
+                                        Sign Up
+                                    </button>
+                                </>
                             )}
                             {inUp === "Up" && (
-                                <button
-                                    type="button"
-                                    className="sign-in-up-selector-button"
-                                    onClick={() => {
-                                        setInUp("In");
-                                    }}
-                                >
-                                    Sign In
-                                </button>
+                                <>
+                                    <h1 className="modal-title">Sign Up</h1>
+                                    <button
+                                        type="button"
+                                        className="sign-in-up-selector-button"
+                                        onClick={() => {
+                                            setInUp("In");
+                                        }}
+                                    >
+                                        Sign In
+                                    </button>
+                                </>
                             )}
                         </div>
-                        {inUp === "In" && (
-                            <SignIn closeFunc={setModal} closeValue={!modal} />
-                        )}
-                        {inUp === "Up" && <SignUp />}
+                        <section className="modal-content hide-form-title">
+                            {inUp === "In" && (
+                                <SignIn
+                                    closeFunc={setModal}
+                                    closeValue={!modal}
+                                />
+                            )}
+                            {inUp === "Up" && <SignUp />}
+                        </section>
                     </Modal>
                 </CSSTransition>
             )}
