@@ -96,39 +96,46 @@ function SignUp(props) {
                         And Sign In
                     </p>
                 )}
-                <label htmlFor="name">
-                    Name
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        autoComplete="name"
-                        value={inputs.name}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="email">
-                    Email
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email Address"
-                        autoComplete="email"
-                        value={inputs.email}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="password">
-                    Password
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        autoComplete="password"
-                        value={inputs.password}
-                        onChange={handleChange}
-                    />
-                </label>
+                
+                <div className="input">
+                        <input
+                            type="name"
+                            name="name"
+                            placeholder="Name"
+                            autoComplete="name"
+                            value={inputs.name}
+                            onChange={handleChange}
+                            className="input_field"
+                            required
+                        />
+                        <label className="input_label" htmlFor="name">Name</label>
+                    </div>
+                <div className="input">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your Email Address"
+                            autoComplete="email"
+                            value={inputs.email}
+                            onChange={handleChange}
+                            className="input_field"
+                            required
+                        />
+                        <label className="input_label" htmlFor="email">Email</label>
+                    </div>
+                    <div className="input">
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            autoComplete="password"
+                            value={inputs.password}
+                            onChange={handleChange}
+                            className="input_field"
+                            required
+                        />
+                        <label className="input_label" htmlFor="password">Password</label>
+                    </div>
                 <button type="submit">Sign Up</button>
             </fieldset>
         </form>

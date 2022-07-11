@@ -15,8 +15,6 @@ fieldset {
     border: none;
 }
 
-
-
 form {
     width: calc(100% - 70px);
     position: relative;
@@ -67,6 +65,10 @@ form {
     h1 {
         float: left;
         font-size: 1.3rem;
+        @media screen and (max-width: 896px) {
+            color: white;
+            text-shadow: 0 0 2px black;
+        }
     }
     .header-button-class {
         float: right;
@@ -120,7 +122,7 @@ form {
     position: absolute;
     top: 45%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
     left: 30%;
     .intro {
         font-size: 4.5139vw;
@@ -134,6 +136,17 @@ form {
             "Noto Color Emoji";
         white-space: pre-line;
         text-shadow: 0 0 5px black;
+
+        @media screen and (max-width: 896px) {
+            font-size: 2rem;
+        }
+    }
+    @media screen and (max-width: 896px) {
+        width: 80%;
+        left: 10%;
+        top: 35%;
+        -ms-transform: translate(0%, -50%);
+        transform: translate(0%, -50%); 
     }
 }
 .blur-layer {
@@ -206,6 +219,27 @@ form {
         position: absolute;
         right: 85px;
         top: 46px;
+        @media screen and (max-width: 290px) {
+            top: 400px;
+            left: 43px;
+            right: initial;
+            width: 125px;
+            height: 50px;
+            font-size: 18px;
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            margin-top: 15px;
+            transition: 0.5s;
+            &:hover,
+            &:active {
+                background: rgba(0, 212, 255, 1);
+                color: white;
+            }
+            &:active {
+                margin-top: 17px;
+                transition: 0s;
+            }
+        }
     }
     width: 400px;
     height: 500px;
@@ -220,18 +254,18 @@ form {
             background: transparent;
             border: 2px solid rgba(0, 212, 255, 0.5);
             margin-top: 15px;
-            transition:0.5s;
-            &:hover,&:active {
+            transition: 0.5s;
+            &:hover,
+            &:active {
                 background: rgba(0, 212, 255, 1);
                 color: white;
             }
-            &:active{
-                margin-top:17px;
+            &:active {
+                margin-top: 17px;
                 transition: 0s;
             }
         }
     }
-    
 }
 
 button {
@@ -263,4 +297,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
     -webkit-transition-delay: 9999s;
+}
+
+@media screen and (max-width: 450px) {
+    .sign-in-up {
+        width: 100% !important;
+        height: 100% !important;
+        left: 0 !important;
+        border-radius: 0px !important;
+        transform: none;
+        top: 0;
+    }
 }

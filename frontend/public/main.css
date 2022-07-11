@@ -65,6 +65,12 @@ form .input label {
   float: left;
   font-size: 1.3rem;
 }
+@media screen and (max-width: 896px) {
+  .header h1 {
+    color: white;
+    text-shadow: 0 0 2px black;
+  }
+}
 .header .header-button-class {
   float: right;
 }
@@ -122,6 +128,20 @@ form .input label {
   font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   white-space: pre-line;
   text-shadow: 0 0 5px black;
+}
+@media screen and (max-width: 896px) {
+  .info-section .intro {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 896px) {
+  .info-section {
+    width: 80%;
+    left: 10%;
+    top: 35%;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+  }
 }
 
 .blur-layer {
@@ -191,6 +211,28 @@ form .input label {
   right: 85px;
   top: 46px;
 }
+@media screen and (max-width: 290px) {
+  .sign-in-up .sign-in-up-selector-button {
+    top: 400px;
+    left: 43px;
+    right: initial;
+    width: 125px;
+    height: 50px;
+    font-size: 18px;
+    background: transparent;
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    margin-top: 15px;
+    transition: 0.5s;
+  }
+  .sign-in-up .sign-in-up-selector-button:hover, .sign-in-up .sign-in-up-selector-button:active {
+    background: rgb(0, 212, 255);
+    color: white;
+  }
+  .sign-in-up .sign-in-up-selector-button:active {
+    margin-top: 17px;
+    transition: 0s;
+  }
+}
 .sign-in-up fieldset button {
   width: 125px;
   height: 50px;
@@ -239,6 +281,17 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
   -webkit-transition-delay: 9999s;
+}
+
+@media screen and (max-width: 450px) {
+  .sign-in-up {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    border-radius: 0px !important;
+    transform: none;
+    top: 0;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
