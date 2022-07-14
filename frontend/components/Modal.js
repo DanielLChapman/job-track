@@ -2,7 +2,7 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 
 function Modal(props) {
-    let t = props.classes;
+    let t = props.classes || '';
     return (
         <>
             <div

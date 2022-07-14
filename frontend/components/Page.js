@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 //import Header from './Header';
 import Head from 'next/head';
 import { createGlobalStyle } from 'styled-components';
+import { useUser } from './User';
 
 const GlobalStylesSignedIn = createGlobalStyle`
 
@@ -17,6 +18,13 @@ const GlobalStylesSignedIn = createGlobalStyle`
     font-size: 1.5rem;
     line-height:2;
     height: auto;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 0.5) 0%,
+        rgba(9, 9, 121, 0.5) 15%,
+        rgba(0, 212, 255, 1) 100%
+    );
   }
   a {
     text-decoration: none;
@@ -60,12 +68,23 @@ const GlobalStylesSignedOut = createGlobalStyle`
 `;
 
 export default function Page(props) {
+  const user = useUser();
   return (
     <div>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <GlobalStylesSignedOut />
+      {
+        !user && (
+          <GlobalStylesSignedOut />
+        )
+      }
+      {
+        user && (
+          <GlobalStylesSignedIn />
+        )
+      }
+      
       {/*<Header />*/}
       <main>{props.children}</main>
       <link rel="stylesheet" href="main.css" />

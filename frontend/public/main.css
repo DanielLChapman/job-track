@@ -23,7 +23,7 @@ form {
 form .input {
   position: relative;
 }
-form .input input {
+form .input input, form .input select, form .input textarea {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -35,15 +35,18 @@ form .input input {
   text-align: right;
   color: white !important;
 }
-form .input input:focus ~ label {
+form .input input:focus ~ label, form .input select:focus ~ label, form .input textarea:focus ~ label {
   top: -25px;
   left: 0;
   color: white;
   font-size: 12px;
 }
-form .input input:focus, form .input input:active {
+form .input input:focus, form .input input:active, form .input select:focus, form .input select:active, form .input textarea:focus, form .input textarea:active {
   background-color: transparent;
   text-align: left;
+}
+form .input textarea {
+  height: 150px;
 }
 form .input label {
   position: absolute;
@@ -170,24 +173,43 @@ form .input label {
   padding: 0.5rem;
 }
 .modal-window .close-modal {
-  position: absolute;
-  right: 20px;
-  top: 23px;
-  background: transparent;
-  border: transparent;
-  color: white;
-  width: 25px;
-  height: 25px;
-  font-size: 22px;
-  line-height: 1.1;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  position: absolute !important;
+  right: 30px !important;
+  top: 25px !important;
+  background: transparent !important;
+  border: transparent !important;
+  color: white !important;
+  width: 25px !important;
+  height: 25px !important;
+  font-size: 22px !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0 !important;
 }
 .modal-window .modal-title {
   position: relative;
   left: 25px;
   font-size: 2rem;
   width: 150px;
+}
+.modal-window fieldset button {
+  width: 125px !important;
+  height: 50px !important;
+  font-size: 18px !important;
+  color: rgba(0, 212, 255, 0.5) !important;
+  background: transparent !important;
+  border: 2px solid rgba(0, 212, 255, 0.5) !important;
+  margin-top: 15px !important;
+  transition: 0.5s !important;
+}
+.modal-window fieldset button:hover, .modal-window fieldset button:active {
+  background: rgb(0, 212, 255) !important;
+  color: white !important;
+}
+.modal-window fieldset button:active {
+  margin-top: 17px !important;
+  transition: 0s !important;
 }
 
 .sign-in-up {
@@ -200,7 +222,7 @@ form .input label {
   display: none;
 }
 .sign-in-up .close-modal {
-  top: 44px;
+  top: 44px !important;
 }
 .sign-in-up .sign-in-up-selector-button {
   background: transparent;
@@ -283,8 +305,16 @@ input:-webkit-autofill:active {
   -webkit-transition-delay: 9999s;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 540px) {
   .sign-in-up {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    border-radius: 0px !important;
+    transform: none;
+    top: 0;
+  }
+  .modal-window {
     width: 100% !important;
     height: 100% !important;
     left: 0 !important;

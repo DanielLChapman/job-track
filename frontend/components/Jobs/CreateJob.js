@@ -6,16 +6,22 @@ import { CURRENT_USER_QUERY } from "../User";
 import { useMutation } from "@apollo/client";
 
 const CREATE_JOB_MUTATION = gql`
-    mutation CREATE_JOB_MUTATION($name: String!, $status: String, $author: ID!, $salaryExpectation: Int, $notes: String) {
-        createJob(data: {
-            name: $name,
-            status: $status, 
-            author: 
-                {connect: 
-                    {id: $author}
-                }, 
-            salaryExpectation: $salaryExpectation, 
-            notes: $notes }) {
+    mutation CREATE_JOB_MUTATION(
+        $name: String!
+        $status: String
+        $author: ID!
+        $salaryExpectation: Int
+        $notes: String
+    ) {
+        createJob(
+            data: {
+                name: $name
+                status: $status
+                author: { connect: { id: $author } }
+                salaryExpectation: $salaryExpectation
+                notes: $notes
+            }
+        ) {
             id
             name
         }
@@ -65,18 +71,20 @@ function CreateJob(props) {
             <form method="POST" onSubmit={handleSubmit}>
                 <h2>Create a new Job</h2>
                 <fieldset disabled={loading} aria-busy={loading}>
-                    <label htmlFor="name">
-                        Name
+                    <div className="input">
                         <input
                             type="text"
                             name="name"
                             placeholder="Name"
                             value={inputs.name}
+                            required
+                            className="input_field"
                             onChange={handleChange}
                         />
-                    </label>
-                    <label htmlFor="status">
-                        Status
+                        <label htmlFor="name">Name</label>
+                    </div>
+
+                    <div className="input">
                         <select
                             name="status"
                             value={inputs.status}
@@ -86,9 +94,9 @@ function CreateJob(props) {
                             <option value="rejected">Rejected</option>
                             <option value="accepted">Accepted</option>
                         </select>
-                    </label>
-                    <label htmlFor="salaryExpectation">
-                        Salary Expectation
+                        <label htmlFor="status">Status</label>
+                    </div>
+                    <div className="input">
                         <input
                             type="number"
                             name="salaryExpectation"
@@ -96,15 +104,19 @@ function CreateJob(props) {
                             value={inputs.salaryExpectation}
                             onChange={handleChange}
                         />
-                    </label>
-                    <label htmlFor="notes">
-                        Notes
+                        <label htmlFor="salaryExpectation">
+                            Salary Expectation
+                        </label>
+                    </div>
+                    <div className="input">
                         <textarea
                             value={inputs.notes}
                             onChange={handleChange}
                             name="notes"
                         />
-                    </label>
+
+                        <label htmlFor="notes">Notes</label>
+                    </div>
 
                     <button type="submit">Add Job</button>
                 </fieldset>

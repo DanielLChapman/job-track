@@ -33,9 +33,18 @@ function Header({ user }) {
 
                     <SignOut />
                     {modalCreateJob && (
-                        <Modal closeFunc={setModalCreateJob}>
-                            <CreateJob user={user} />
-                        </Modal>
+                        <CSSTransition
+                            in={modalCreateJob}
+                            timeout={200}
+                            classNames="modal-transition"
+                            unmountOnExit
+                            onExited={() => setModalCreateJob(false)}
+                        >
+                            <Modal closeFunc={setModalCreateJob}>
+                      
+                                <CreateJob user={user} />
+                            </Modal>
+                        </CSSTransition>
                     )}
                 </div>
             )}
