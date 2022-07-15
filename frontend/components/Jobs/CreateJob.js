@@ -57,17 +57,14 @@ function CreateJob(props) {
         e.preventDefault();
         const res = await createJob();
         clearForm();
+        if (props.closeFunc) {
+            props.closeFunc(false);
+        }
     };
 
     return (
         <>
             {error && <span>Error, Please Try Again</span>}
-            {data && (
-                <span>
-                    Success! You Can Close This Window or Return To The Homepage{" "}
-                    <a href="/">Here</a>
-                </span>
-            )}
             <form method="POST" onSubmit={handleSubmit}>
                 <h2>Create a new Job</h2>
                 <fieldset disabled={loading} aria-busy={loading}>

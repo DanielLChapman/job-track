@@ -68,18 +68,20 @@ function EditJob(props) {
             <form method="POST" onSubmit={handleSubmit}>
                 <h2>Edit {props.job.name}</h2>
                 <fieldset disabled={loading} aria-busy={loading}>
-                    <label htmlFor="name">
-                        Name
+                    <div className="input">
                         <input
                             type="text"
                             name="name"
                             placeholder="Name"
                             value={inputs.name}
+                            required
+                            className="input_field"
                             onChange={handleChange}
                         />
-                    </label>
-                    <label htmlFor="status">
-                        Status
+                        <label htmlFor="name">Name</label>
+                    </div>
+
+                    <div className="input">
                         <select
                             name="status"
                             value={inputs.status}
@@ -89,9 +91,9 @@ function EditJob(props) {
                             <option value="rejected">Rejected</option>
                             <option value="accepted">Accepted</option>
                         </select>
-                    </label>
-                    <label htmlFor="salaryExpectation">
-                        Salary Expectation
+                        <label htmlFor="status">Status</label>
+                    </div>
+                    <div className="input">
                         <input
                             type="number"
                             name="salaryExpectation"
@@ -99,15 +101,19 @@ function EditJob(props) {
                             value={inputs.salaryExpectation}
                             onChange={handleChange}
                         />
-                    </label>
-                    <label htmlFor="notes">
-                        Notes
+                        <label htmlFor="salaryExpectation">
+                            Salary Expectation
+                        </label>
+                    </div>
+                    <div className="input">
                         <textarea
                             value={inputs.notes}
                             onChange={handleChange}
                             name="notes"
                         />
-                    </label>
+
+                        <label htmlFor="notes">Notes</label>
+                    </div>
 
                     <button type="submit">Edit Job</button>
                 </fieldset>

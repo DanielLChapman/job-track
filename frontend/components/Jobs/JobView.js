@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import DeleteJob from './DeleteJob';
 import EditJob from './EditJob';
 import StatusEdit from './StatusEdit';
+import Modal from "../Modal";
+import { CSSTransition } from "react-transition-group";
 
 JobView.propTypes = {
     job: PropTypes.object,
@@ -34,7 +36,21 @@ function JobView({job}) {
                 open && (
                     <div>
                     {
-                        editBlock ? <EditJob job={job} closeForm={setEditBlock} /> : 
+
+                        editBlock ? 
+                        <CSSTransition
+                            in={editBlock}
+                            timeout={200}
+                            classNames="modal-transition"
+                            unmountOnExit
+                            onExited={() => setEditBlock(false)}
+                        >
+                            <Modal closeFunc={setEditBlock}>
+                      
+                                <EditJob job={job} closeForm={setEditBlock}/>
+                            </Modal>
+                        </CSSTransition>
+                        : 
                         <div>
                             <button type="button" onClick={() => {
                                 setEditBlock(!editBlock);

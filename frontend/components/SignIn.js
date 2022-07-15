@@ -34,7 +34,7 @@ function SignIn(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await signin();
-        console.log(res);
+
         if (props.closeFunc) {
             props.closeFunc(props.closeValue);
         }

@@ -173,19 +173,19 @@ form .input label {
   padding: 0.5rem;
 }
 .modal-window .close-modal {
-  position: absolute !important;
-  right: 30px !important;
-  top: 25px !important;
-  background: transparent !important;
-  border: transparent !important;
-  color: white !important;
-  width: 25px !important;
-  height: 25px !important;
-  font-size: 22px !important;
-  line-height: 1.1 !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.04em !important;
-  padding: 0 !important;
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  background: transparent;
+  border: transparent;
+  color: white;
+  width: 25px;
+  height: 25px;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0;
 }
 .modal-window .modal-title {
   position: relative;

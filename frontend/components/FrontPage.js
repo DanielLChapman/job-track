@@ -9,15 +9,13 @@ import SignUp from './SignUp';
 import { useUser } from './User';
 
 function FrontPage(props) {
-    let user = useUser();
-
-    
+    let user = props.user;
 
 
     return (
         <section className='container'>
             <section className='header'>
-                <Header user={user} />
+                <Header user={user} modalFill={props.modalFill} />
             </section>
             {user && (
                 <UserFrontPage user={user} />

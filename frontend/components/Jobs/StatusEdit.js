@@ -46,7 +46,6 @@ function StatusEdit({job, closeForm}) {
                             name="status"
                             value={status}
                             onChange={(e) => {
-                                console.log(e.target);
                                 setStatus(e.target.value);
                             }}
                         >
