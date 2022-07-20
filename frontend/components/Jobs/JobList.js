@@ -8,11 +8,11 @@ JobList.propTypes = {
 
 function JobList(props) {
     return (
-        <ul>   
+        <ul className="job-view-container">   
             {
                 props.jobs && props.jobs.map((x) => (
                     <li key={x.id}>
-                        <JobView job={x}  />
+                        <JobView job={x} modalFill={props.modalFill} />
                     </li>
                 ))
             }

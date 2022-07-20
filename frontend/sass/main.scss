@@ -22,7 +22,9 @@ form {
     .input {
         position: relative;
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             width: 100%;
             padding: 10px 0;
             font-size: 16px;
@@ -125,7 +127,7 @@ form {
     position: absolute;
     top: 45%;
     -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     left: 30%;
     .intro {
         font-size: 4.5139vw;
@@ -149,7 +151,7 @@ form {
         left: 10%;
         top: 35%;
         -ms-transform: translate(0%, -50%);
-        transform: translate(0%, -50%); 
+        transform: translate(0%, -50%);
     }
 }
 .blur-layer {
@@ -185,9 +187,9 @@ form {
     .close-modal {
         position: absolute;
         right: 30px;
-        top: 25px ;
+        top: 25px;
         background: transparent;
-        border: transparent ;
+        border: transparent;
         color: white;
         width: 25px;
         height: 25px;
@@ -226,7 +228,6 @@ form {
             }
         }
     }
-    
 }
 
 .sign-in-up {
@@ -342,5 +343,67 @@ input:-webkit-autofill:active {
         border-radius: 0px !important;
         transform: none;
         top: 0;
+    }
+}
+
+.job-view-container {
+    width: 80%;
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-top: 25px;
+    position: relative;
+    height: 100%;
+    list-style: none;
+    li {
+        height: 100%;
+        overflow: auto;
+        position: relative;
+        .job-block {
+            height: 100%;
+            position: relative;
+            overflow: auto;
+            .job-block-title {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background: #bdd8de;
+                overflow: auto;
+                padding: 5px 25px;
+                margin-bottom: 2px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-content: center;
+                align-items: flex-start;
+                h5 {
+                    position: relative;
+                    vertical-align: middle;
+                    order: 0;
+                    flex: 0 1 75px;
+                    align-self: center;
+                }
+                .button-group {
+                    order: 0;
+                    flex: 0 1 auto;
+                    align-self: center;
+                }
+                form {
+                    order: 0;
+                    flex: 0 1 200px;
+                    align-self: center;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                span {
+                    order: 0;
+                    flex: 0 1 200px;
+                    align-self: center;
+                    text-align: center;
+                    vertical-align: middle;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }

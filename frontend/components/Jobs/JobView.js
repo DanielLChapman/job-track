@@ -10,7 +10,7 @@ JobView.propTypes = {
     job: PropTypes.object,
 };
 
-function JobView({job}) {
+function JobView({user, job}) {
     const [open, setOpen] = useState(false);
     const [quickEdit, setQuickEdit] = useState(false);
     const [editBlock, setEditBlock] = useState(false);
@@ -23,14 +23,15 @@ function JobView({job}) {
                         setQuickEdit(true);
                     }}>{job.status}</span>
                 }
+                <section className="button-group">
+                    <DeleteJob job={job} />
+                    <button type="button" onClick={() => {
+                        setOpen(!open);
+                    }}>
+                        {open ? 'Close' : 'Expand'}
+                    </button>
+                </section>
                 
-                <br />
-                <DeleteJob job={job} />
-                <button type="button" onClick={() => {
-                    setOpen(!open);
-                }}>
-                    {open ? 'Close' : 'Expand'}
-                </button>
             </section>
             {
                 open && (
@@ -39,15 +40,20 @@ function JobView({job}) {
 
                         editBlock ? 
                         <CSSTransition
+                                //would need to pass job back to the top which may be inefficient?  
                             in={editBlock}
-                            timeout={200}
+                            timeout={{
+                                appear: 400,
+                                enter: 200,
+                                exit: 0,
+                               }}
                             classNames="modal-transition"
                             unmountOnExit
                             onExited={() => setEditBlock(false)}
                         >
                             <Modal closeFunc={setEditBlock}>
                       
-                                <EditJob job={job} closeForm={setEditBlock}/>
+                                <EditJob user={user} job={job} />
                             </Modal>
                         </CSSTransition>
                         : 

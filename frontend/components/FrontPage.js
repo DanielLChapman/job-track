@@ -18,7 +18,7 @@ function FrontPage(props) {
                 <Header user={user} modalFill={props.modalFill} />
             </section>
             {user && (
-                <UserFrontPage user={user} />
+                <UserFrontPage user={user} modalFill={props.modalFill} />
             )}
             {!user && (
                 <>
