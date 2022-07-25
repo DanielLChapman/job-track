@@ -357,11 +357,27 @@ input:-webkit-autofill:active {
     li {
         height: 100%;
         overflow: auto;
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
         position: relative;
         .job-block {
             height: 100%;
             position: relative;
             overflow: auto;
+            .job-block-view {
+                width: 100%;
+                border: 1px solid #bdd8de;
+                position: relative;
+                margin-top: -2px;
+                padding: 5px 25px;
+                background: #ffffff87;
+                button {
+                    padding: 5px;
+                    margin-right:5px;
+                }
+            }
             .job-block-title {
                 width: 100%;
                 height: 100%;
@@ -380,13 +396,17 @@ input:-webkit-autofill:active {
                     position: relative;
                     vertical-align: middle;
                     order: 0;
-                    flex: 0 1 75px;
+                    flex: 0 1 125px;
                     align-self: center;
                 }
                 .button-group {
                     order: 0;
                     flex: 0 1 auto;
                     align-self: center;
+                    button {
+                        padding: 5px;
+                        margin-right:5px;
+                    }
                 }
                 form {
                     order: 0;
