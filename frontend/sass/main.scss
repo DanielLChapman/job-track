@@ -119,7 +119,8 @@ form {
 }
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 .info-section {
     width: 30%;
@@ -357,10 +358,10 @@ input:-webkit-autofill:active {
     li {
         height: 100%;
         overflow: auto;
-        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system,
+            system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+            "Noto Color Emoji";
         position: relative;
         .job-block {
             height: 100%;
@@ -375,7 +376,15 @@ input:-webkit-autofill:active {
                 background: #ffffff87;
                 button {
                     padding: 5px;
-                    margin-right:5px;
+                    margin-right: 5px;
+                }
+            }
+            .job-block-edit-form, .job-block-view-area {
+  
+                color: #000000;
+                padding: 0.5rem;
+                * {
+                    color: #000000 !important;
                 }
             }
             .job-block-title {
@@ -405,7 +414,7 @@ input:-webkit-autofill:active {
                     align-self: center;
                     button {
                         padding: 5px;
-                        margin-right:5px;
+                        margin-right: 5px;
                     }
                 }
                 form {

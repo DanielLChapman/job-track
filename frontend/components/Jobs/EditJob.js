@@ -7,7 +7,7 @@ import { CURRENT_USER_QUERY } from "../User";
 
 EditJob.propTypes = {
     job: PropTypes.object.isRequired,
-    closeForm: PropTypes.func
+    closeForm: PropTypes.func.isRequired,
 };
 
 export const EDIT_JOB_MUTATION = gql`
@@ -66,7 +66,7 @@ function EditJob(props) {
         <>
             {error && <span>Error, Please Try Again</span>}
             <form method="POST" onSubmit={handleSubmit}>
-                <h2>Edit {props.job.name}</h2>
+                <h2>Edit {inputs.name}</h2>
                 <fieldset disabled={loading} aria-busy={loading}>
                     <div className="input">
                         <input
@@ -100,6 +100,7 @@ function EditJob(props) {
                             placeholder="0"
                             value={inputs.salaryExpectation}
                             onChange={handleChange}
+                            max="2000000000"
                         />
                         <label htmlFor="salaryExpectation">
                             Salary Expectation
@@ -116,6 +117,9 @@ function EditJob(props) {
                     </div>
 
                     <button type="submit">Edit Job</button>
+                    <button type="submit" onClick={() => {
+                        props.closeForm(false);
+                    }}>Stop Editing</button>
                 </fieldset>
             </form>
         </>

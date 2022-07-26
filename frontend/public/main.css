@@ -118,7 +118,8 @@ form .input label {
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .info-section {
@@ -362,6 +363,13 @@ input:-webkit-autofill:active {
 .job-view-container li .job-block .job-block-view button {
   padding: 5px;
   margin-right: 5px;
+}
+.job-view-container li .job-block .job-block-edit-form, .job-view-container li .job-block .job-block-view-area {
+  color: #000000;
+  padding: 0.5rem;
+}
+.job-view-container li .job-block .job-block-edit-form *, .job-view-container li .job-block .job-block-view-area * {
+  color: #000000 !important;
 }
 .job-view-container li .job-block .job-block-title {
   width: 100%;

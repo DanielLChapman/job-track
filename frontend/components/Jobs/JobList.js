@@ -14,7 +14,7 @@ function JobList(props) {
         <ul className="job-view-container">   
             {
                 props.jobs && props.jobs.map((x) => (
-                        <JobView job={x} modalFill={props.modalFill}/>
+                        <JobView job={x} modalFill={props.modalFill} key={x.id}/>
                 ))
             }
         </ul>

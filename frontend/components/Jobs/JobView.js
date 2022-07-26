@@ -5,6 +5,7 @@ import EditJob from "./EditJob";
 import StatusEdit from "./StatusEdit";
 import Modal from "../Modal";
 import { CSSTransition } from "react-transition-group";
+import JobInfo from "./JobInfo";
 
 JobView.propTypes = {
     job: PropTypes.object,
@@ -16,17 +17,16 @@ function JobView({ user, job }) {
     const [editBlock, setEditBlock] = useState(false);
 
     return (
-        <li
-            key={job.id}
-            onClick={() => {
-                if (!quickEdit) {
-                    setOpen(!open);
-                }
-               
-            }}
-        >
+        <li key={job.id}>
             <section className="job-block">
-                <section className="job-block-title">
+                <section
+                    className="job-block-title"
+                    onClick={() => {
+                        if (!quickEdit && !editBlock) {
+                            setOpen(!open);
+                        }
+                    }}
+                >
                     <h5 className="job-block-title-text">{job.name}</h5>
                     {quickEdit ? (
                         <StatusEdit job={job} closeForm={setQuickEdit} />
@@ -55,24 +55,19 @@ function JobView({ user, job }) {
                 {open && (
                     <section className="job-block-view">
                         {editBlock ? (
-                            <CSSTransition
-                                //would need to pass job back to the top which may be inefficient?
-                                in={editBlock}
-                                timeout={{
-                                    appear: 400,
-                                    enter: 200,
-                                    exit: 0,
-                                }}
-                                classNames="modal-transition"
-                                unmountOnExit
-                                onExited={() => setEditBlock(false)}
-                            >
-                                <Modal closeFunc={setEditBlock}>
-                                    <EditJob user={user} job={job} />
-                                </Modal>
-                            </CSSTransition>
+                            <section className="job-block-edit-form">
+                                
+                                <EditJob
+                                    user={user}
+                                    job={job}
+                                    closeForm={() => {
+                                        setEditBlock(!editBlock);
+                                    }}
+                                />
+                            </section>
                         ) : (
-                            <div>
+                            <section className="job-block-view-area">
+                                <JobInfo job={job} />
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -81,7 +76,7 @@ function JobView({ user, job }) {
                                 >
                                     {editBlock ? "Close" : "Edit"}
                                 </button>
-                            </div>
+                            </section>
                         )}
                     </section>
                 )}
