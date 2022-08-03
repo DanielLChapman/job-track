@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "sass:watch": "sass -w ./sass/main.scss ./public/main.css",
+    "test": "NODE_ENV=test jest --watch",
     "watch": "npm run sass:watch & npm run dev"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "apollo-upload-client": "^17.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-styled-components": "^1.12.0",
+    "casual": "^1.6.2",
     "concurrently": "^7.2.1",
     "date-fns": "^2.28.0",
     "graphql": "^16.5.0",
@@ -37,6 +39,7 @@
     "@apollo/react-testing": "^4.0.0",
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
+    "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.3.0",

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It insures the front page renders text when not logged in has a title, and two buttons when not logged in 1`] = `
+<div>
+  <section
+    class="container"
+  >
+    <section
+      class="header"
+    >
+      <h1>
+        Job Track
+      </h1>
+      <div
+        class="header-button-class"
+      >
+        <button
+          class="sign-in-button"
+          type="button"
+        >
+          Sign In / Up
+        </button>
+      </div>
+    </section>
+    <section
+      class="info-section"
+    >
+      <section
+        class="intro"
+      >
+        A website to keep track of your job applications!
+      </section>
+    </section>
+  </section>
+</div>
+`;
+
+exports[`It insures the front page renders text when not logged in renders a different header when logged in 1`] = `
+<div>
+  <section
+    class="container"
+  >
+    <section
+      class="header"
+    >
+      <h1>
+        Job Track
+      </h1>
+      <div
+        class="header-button-class"
+      >
+        <button
+          class="sign-in-button"
+          type="button"
+        >
+          Create Job
+        </button>
+        <button
+          type="button"
+        >
+          Sign Out
+        </button>
+      </div>
+    </section>
+    <section
+      class="jobs-list"
+    >
+      <ul
+        class="job-view-container"
+      />
+    </section>
+  </section>
+</div>
+`;

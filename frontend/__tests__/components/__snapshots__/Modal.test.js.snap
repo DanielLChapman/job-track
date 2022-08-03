@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It tests the accuracy of modals and switching With classes props, it displays the inner text with className found 1`] = `
+<div>
+  <div
+    class="blur-layer"
+  />
+  <div
+    class=" modal-window find-me "
+  >
+    <button
+      class="close-modal"
+      type="button"
+    >
+      X
+    </button>
+    Find Me
+  </div>
+</div>
+`;
+
+exports[`It tests the accuracy of modals and switching With innertext props, it displays the inner text 1`] = `
+<div>
+  <div
+    class="blur-layer"
+  />
+  <div
+    class=" modal-window  "
+  >
+    <button
+      class="close-modal"
+      type="button"
+    >
+      X
+    </button>
+    Find Me
+  </div>
+</div>
+`;
+
+exports[`It tests the accuracy of modals and switching With no props, it displays the inner text 1`] = `
+<div>
+  <div
+    class="blur-layer"
+  />
+  <div
+    class=" modal-window  "
+  >
+    <button
+      class="close-modal"
+      type="button"
+    >
+      X
+    </button>
+    Find Me
+  </div>
+</div>
+`;

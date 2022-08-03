@@ -5,6 +5,11 @@ import SignUp from "../SignUp";
 function SignInUpModal({ user, closeFunc }) {
 
     const [inUp, setInUp] = useState("In");
+    if (user) {
+        return (
+            <span> You Shouldn't be here! </span>
+        )
+    }
     return (
         <>
             <div className="header">
