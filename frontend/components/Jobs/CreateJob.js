@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../User";
 import { useMutation } from "@apollo/client";
 
-const CREATE_JOB_MUTATION = gql`
+export const CREATE_JOB_MUTATION = gql`
     mutation CREATE_JOB_MUTATION(
         $name: String!
         $status: String
@@ -64,6 +64,7 @@ function CreateJob(props) {
 
     return (
         <>
+            {data && <span data-testid="success-signup-message">Success!</span>}
             {error && <span>Error, Please Try Again</span>}
             <form method="POST" onSubmit={handleSubmit}>
                 <h2>Create a new Job</h2>
@@ -100,6 +101,7 @@ function CreateJob(props) {
                             placeholder="0"
                             value={inputs.salaryExpectation}
                             onChange={handleChange}
+                            data-testid="salaryExpectation"
                         />
                         <label htmlFor="salaryExpectation">
                             Salary Expectation
@@ -110,6 +112,8 @@ function CreateJob(props) {
                             value={inputs.notes}
                             onChange={handleChange}
                             name="notes"
+                            alt="textarea"
+                            data-testid="notes"
                         />
 
                         <label htmlFor="notes">Notes</label>

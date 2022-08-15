@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import useForm from "../../library/useForm";
-import { CURRENT_USER_QUERY } from "../User";
+import { CURRENT_USER_QUERY, useUser } from "../User";
 
 EditJob.propTypes = {
     job: PropTypes.object.isRequired,
@@ -34,6 +34,7 @@ export const EDIT_JOB_MUTATION = gql`
 
 function EditJob(props) {
 
+    
     let job = props.job;
 
     const { inputs, handleChange } = useForm({
@@ -62,8 +63,15 @@ function EditJob(props) {
         }
     };
 
+    const user = useUser();
+    if (!user) return <span>Please Log In</span>
+
+    if (user && props.job.author.id !== user.id ) return <span>You Shouldn't Be Here</span>
+
+
     return (
         <>
+            {data && <span data-testid="success-message">Success!</span>}
             {error && <span>Error, Please Try Again</span>}
             <form method="POST" onSubmit={handleSubmit}>
                 <h2>Edit {inputs.name}</h2>
@@ -101,6 +109,7 @@ function EditJob(props) {
                             value={inputs.salaryExpectation}
                             onChange={handleChange}
                             max="2000000000"
+    
                         />
                         <label htmlFor="salaryExpectation">
                             Salary Expectation
@@ -111,6 +120,8 @@ function EditJob(props) {
                             value={inputs.notes}
                             onChange={handleChange}
                             name="notes"
+                            alt="textarea"
+                            data-testid="notes"
                         />
 
                         <label htmlFor="notes">Notes</label>

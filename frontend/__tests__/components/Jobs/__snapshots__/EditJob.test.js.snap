@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a job edit form and submits successfully does not load unless signed in 1`] = `
+<div>
+  <span>
+    Please Log In
+  </span>
+</div>
+`;
+
+exports[`it renders a job edit form and submits successfully does not load unless signed in and user is the same user as the job 1`] = `
+<div>
+  <span>
+    You Shouldn't Be Here
+  </span>
+</div>
+`;

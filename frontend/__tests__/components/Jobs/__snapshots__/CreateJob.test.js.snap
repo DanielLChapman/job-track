@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a job submit form and submits successfully does load correctly unless signed in 1`] = `
+<div>
+  <form
+    method="POST"
+  >
+    <h2>
+      Create a new Job
+    </h2>
+    <fieldset
+      aria-busy="false"
+    >
+      <div
+        class="input"
+      >
+        <input
+          class="input_field"
+          name="name"
+          placeholder="Name"
+          required=""
+          type="text"
+          value=""
+        />
+        <label
+          for="name"
+        >
+          Name
+        </label>
+      </div>
+      <div
+        class="input"
+      >
+        <select
+          name="status"
+        >
+          <option
+            value="waiting"
+          >
+            Waiting
+          </option>
+          <option
+            value="rejected"
+          >
+            Rejected
+          </option>
+          <option
+            value="accepted"
+          >
+            Accepted
+          </option>
+        </select>
+        <label
+          for="status"
+        >
+          Status
+        </label>
+      </div>
+      <div
+        class="input"
+      >
+        <input
+          data-testid="salaryExpectation"
+          name="salaryExpectation"
+          placeholder="0"
+          type="number"
+          value="0"
+        />
+        <label
+          for="salaryExpectation"
+        >
+          Salary Expectation
+        </label>
+      </div>
+      <div
+        class="input"
+      >
+        <textarea
+          alt="textarea"
+          data-testid="notes"
+          name="notes"
+        />
+        <label
+          for="notes"
+        >
+          Notes
+        </label>
+      </div>
+      <button
+        type="submit"
+      >
+        Add Job
+      </button>
+    </fieldset>
+  </form>
+</div>
+`;
+
+exports[`it renders a job submit form and submits successfully does not load unless signed in 1`] = `
+<div>
+  <span>
+    Please Log In
+  </span>
+</div>
+`;
