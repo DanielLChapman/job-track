@@ -18,7 +18,7 @@ function JobView({ user, job }) {
 
     return (
         <li key={job.id}>
-            <section className="job-block">
+            <section className="job-block" data-testid="job-block">
                 <section
                     className="job-block-title"
                     onClick={() => {

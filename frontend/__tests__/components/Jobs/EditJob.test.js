@@ -23,7 +23,7 @@ const mocks = [
         request: {
             query: EDIT_JOB_MUTATION,
             variables: {
-                name: job.name,
+                name: job.name + "1",
                 status: job.status,
                 id: job.id,
                 salaryExpectation: job.salaryExpectation,
@@ -87,7 +87,7 @@ describe('it renders a job edit form and submits successfully', () => {
         );
 
         // Type into the boxes
-        //await userEvent.type(screen.getByPlaceholderText(/name/i), "1");
+        await userEvent.type(screen.getByPlaceholderText(/name/i), "1");
         //await userEvent.type(screen.getByTestId('notes'), "2");
       // Click the submit
         await userEvent.click(screen.getByText('Edit Job'));
@@ -102,18 +102,4 @@ describe('it renders a job edit form and submits successfully', () => {
         );*/
       });
 
-    /*
-    it ('does load correctly unless signed in', async() => {
-        const {container, debug} = render(
-            <MockedProvider mocks={signedInMocks}>
-                <CreateJob user={fakeUser()} />
-            </MockedProvider>
-        )
-
-        await screen.findByText(
-            'Create a new Job'
-        );
-
-        expect(container).toMatchSnapshot();
-    })*/
 })

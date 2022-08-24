@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It insures the correct information is displayed renders correctly when a job is passed in 1`] = `
+<div>
+  <ul>
+    <li>
+      <h2>
+        Mrs. Constantin Dickinson
+      </h2>
+    </li>
+    <li>
+      <h5>
+        waiting
+      </h5>
+    </li>
+    <li>
+      <h5>
+        $0
+      </h5>
+    </li>
+    <li>
+      <h5>
+        Neque quia vero sint ab dolorem deserunt provident.
+      </h5>
+    </li>
+  </ul>
+</div>
+`;
