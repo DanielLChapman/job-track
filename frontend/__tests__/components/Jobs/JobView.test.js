@@ -33,5 +33,35 @@ describe('It insures the correct information is displayed', () => {
 
         await screen.findByText('Status');
         
+        
+    })
+
+    it ('renders correctly when a job is passed in', async () => {
+
+        const { container, debug} = render(
+            <MockedProvider>
+                <JobView job={job} />
+            </MockedProvider>
+        )
+
+        await act(async() => {
+            await wait(0);
+        }); 
+
+        const element = await screen.getByTestId('job-block');
+        expect(element);
+
+        await screen.findByText('⇩');
+        await userEvent.click(screen.getByText('⇩'));
+
+        await act(async() => {
+            await wait(0);
+        }); 
+
+        await screen.findByText('Edit');
+
+        expect(await screen.getByTestId('job-info-appear'));
+        
+        
     })
 })

@@ -34,6 +34,9 @@ function StatusEdit({job, closeForm}) {
     if (error) {
         alert('Sorry, error in updating status, please check logs and try again');
         console.log(error);
+        if (res.data.updateJob.id && closeForm) {
+            closeForm(false);
+        }
     }
 
     return (

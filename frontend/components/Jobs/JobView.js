@@ -66,7 +66,7 @@ function JobView({ user, job }) {
                                 />
                             </section>
                         ) : (
-                            <section className="job-block-view-area">
+                            <section data-testid="job-info-appear" className="job-block-view-area">
                                 <JobInfo job={job} />
                                 <button
                                     type="button"
